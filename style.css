@@ -1,0 +1,13 @@
+:root {
+  --color-pink: #ff3ea1;
+  --color-green: #57bf69;
+  --color-blue: #364693;
+  --color-yellow: #f2cc46;
+}
+
+body {
+  background-color: var(--color-blue);
+  color: #000000;
+  padding: 0;
+  margin: 0;
+}
