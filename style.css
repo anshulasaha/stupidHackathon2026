@@ -5,9 +5,71 @@
   --color-yellow: #f2cc46;
 }
 
+@font-face {
+  font-family: "mainFont";
+  src: url("./mainFont.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "myFont";
+  src: url("./myFont.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
 body {
   background-color: var(--color-blue);
   color: #000000;
   padding: 0;
   margin: 0;
+  background-color: --color-blue;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+canvas {
+  display: block;
+}
+
+#space {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroSection {
+  position: relative;
+  z-index: 1;
+  color: #ffffff;
+  padding: 40px;
+}
+
+h1 {
+  position: absolute;
+  /* left: 28rem; moving this inwards */
+  top: 40%;
+
+  margin: 0;
+
+  font-family: "mainFont", sans-serif;
+  font-size: clamp(3rem, 7vmax, 12rem);
+  letter-spacing: -0.001em;
+  line-height: 1.5;
+}
+
+h3 {
+  position: absolute;
+  left: 4%;
+  top: 430%;
+
+  margin: 2;
+
+  font-family: "myFont", sans-serif;
+  font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+  letter-spacing: -0.001em;
+  line-height: 1.5;
 }
