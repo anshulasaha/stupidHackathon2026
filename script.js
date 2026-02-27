@@ -1,6 +1,9 @@
 window.onload = function () {
   const canvas = document.getElementById("space");
   const ctx = canvas.getContext("2d");
+  const rainbow = document.getElementById("rainbow");
+
+  let floatPhase = 0;
 
   function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -8,10 +11,8 @@ window.onload = function () {
   }
 
   resizeCanvas();
-
   window.addEventListener("resize", resizeCanvas);
 
-  // Create stars
   const NUM_STARS = 40;
   const stars = [];
 
@@ -47,8 +48,14 @@ window.onload = function () {
     }
 
     ctx.globalAlpha = 1;
+
+    floatPhase += 0.07;
+    const floatY = Math.sin(floatPhase) * 10;
+    rainbow.style.transform = `translateY(${floatY}px)`;
+    tuna.style.transform = `translateY(${floatY}px)`;
+
     requestAnimationFrame(draw);
   }
 
   draw();
-};
+}; //end of window.onload

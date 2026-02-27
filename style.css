@@ -21,18 +21,28 @@
 
 body {
   background-color: var(--color-blue);
-  color: #000000;
+  color: #fff;
   padding: 0;
   margin: 0;
-  background-color: --color-blue;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto; /* or scroll */
+  height: auto; /* remove 100vh lock */
+  min-height: 100vh;
   box-sizing: border-box;
 }
 
 canvas {
   display: block;
+}
+
+a,
+a:visited {
+  color: inherit;
+  text-decoration-style: dotted;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 8px;
+  text-decoration-color: hsl(0 0 100% / 50%);
 }
 
 #space {
@@ -41,35 +51,139 @@ canvas {
   z-index: 0;
 }
 
-.heroSection {
+.heroLayout {
   position: relative;
   z-index: 1;
   color: #ffffff;
   padding: 40px;
+  display: grid;
+  gap: 32px;
+  grid-template-areas:
+    "title"
+    "metadata"
+    "illo"
+    "buttons";
+  min-height: 100svh;
+
+  @media (min-width: 32em) {
+    grid-template-areas:
+      "title buttons"
+      "metadata buttons"
+      "illo buttons";
+  }
+
+  @media (min-width: 64em) {
+    grid-template-areas:
+      "title title metadata buttons"
+      "illo illo metadata buttons";
+  }
+}
+
+.heroText {
+  grid-area: title;
+}
+.dateTimeLocation {
+  grid-area: metadata;
+}
+.nyanTuna {
+  grid-area: illo;
+}
+.buttons {
+  grid-area: buttons;
 }
 
 h1 {
-  position: absolute;
-  /* left: 28rem; moving this inwards */
-  top: 40%;
-
   margin: 0;
+}
 
+.mainTitle {
   font-family: "mainFont", sans-serif;
   font-size: clamp(3rem, 7vmax, 12rem);
   letter-spacing: -0.001em;
   line-height: 1.5;
 }
 
+.pageTitle {
+  font-family: "mainFont", sans-serif;
+  color: #ffffff;
+  font-size: clamp(3rem, 7vmax, 12rem);
+  letter-spacing: -0.001em;
+  line-height: 1.5;
+}
+
 h3 {
-  position: absolute;
-  left: 4%;
-  top: 430%;
+}
 
-  margin: 2;
-
+.organisers {
   font-family: "myFont", sans-serif;
   font-size: clamp(1.2rem, 1.5vw, 1.8rem);
   letter-spacing: -0.001em;
   line-height: 1.5;
+}
+
+.subheading {
+  font-family: "myFont", sans-serif;
+  font-size: clamp(1.2rem, 1.5vw, 1.8rem);
+  letter-spacing: -0.001em;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+.dateTimeLocation {
+  font-family: "myFont", sans-serif;
+  font-size: clamp(1.2rem, 1.4vw, 1.8rem);
+  letter-spacing: -0.004em;
+  line-height: 1.5;
+}
+
+.nyanTuna {
+  position: relative;
+  z-index: -1;
+  width: 600px;
+  height: 0px;
+  max-width: 85vw;
+
+  @media (min-width: 32em) {
+    position: fixed;
+    left: 0;
+    bottom: 20px;
+  }
+}
+
+.rainbow {
+  position: absolute;
+  left: -5vh;
+  top: -31vh;
+  width: 320px;
+}
+
+.tuna {
+  position: absolute;
+  left: 17vh;
+  top: -58vh;
+  width: 600px;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+
+  @media (min-width: 32em) {
+    flex-direction: column;
+  }
+}
+
+.pixelButton {
+  width: 165px; /* or your pixel size */
+  image-rendering: pixelated;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-content: center;
+  background-image: url(button.png);
+  text-decoration: none;
+  color: var(--color-blue);
+  background-size: 100% 100%;
+  background-position: center center;
+  font-family: "myFont", sans-serif;
+  font-size: 1.5rem;
 }
